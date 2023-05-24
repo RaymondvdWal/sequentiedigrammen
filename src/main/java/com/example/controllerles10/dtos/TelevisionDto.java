@@ -1,4 +1,5 @@
 package com.example.controllerles10.dtos;
+import com.example.controllerles10.model.RemoteController;
 import com.example.controllerles10.model.Television;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -20,7 +21,7 @@ public class TelevisionDto {
     public double price;
     @NotNull
     public int screenSize;
-
+    public RemoteController remoteController;
 
     public TelevisionDto fromTelevision(Television television) {
 

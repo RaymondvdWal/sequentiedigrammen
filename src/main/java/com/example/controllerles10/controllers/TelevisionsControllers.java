@@ -14,6 +14,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 
 @RestController
 public class TelevisionsControllers {
@@ -58,6 +60,15 @@ public class TelevisionsControllers {
 
     }
 
+    @PutMapping("/televisions/{id}/remote/{remote_controller_id}")
+    public ResponseEntity<TelevisionDto> assignRemoteControllerToTelevision(@PathVariable Long id, @PathVariable Long remote_controller_id) {
+        return ResponseEntity.ok(televisionService.assignRemoteControllerToTelevision(id, remote_controller_id));
+    }
+
+    @PutMapping("/televisions/{id}/wallbracket/{wallbracket_id}")
+    public ResponseEntity<String>assignWallBracketToTelevision(@PathVariable Long id, @PathVariable Long wallbracket_id) {
+        return ResponseEntity.ok(televisionService.assignWallBracketToTelevision(id, wallbracket_id));
+    }
     @DeleteMapping("/televisions/{id}")
     public ResponseEntity<TelevisionDto> deleteTelevision(@PathVariable(value = "id") Long televisionId)
         throws RecordNotFoundException{
